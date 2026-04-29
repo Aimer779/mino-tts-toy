@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiMo TTS Studio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="header">
@@ -14,7 +15,7 @@
                 <div class="status-dot" id="statusDot"></div>
                 <span id="statusText">未配置</span>
             </div>
-            <button class="btn-icon" onclick="openSettings()">⚙️</button>
+            <button class="btn-icon" onclick="openSettings()"><span class="material-icons">settings</span></button>
         </div>
     </div>
 
@@ -66,7 +67,7 @@
                         <div class="char-count"><span id="charCount">0</span>/5000</div>
                     </div>
 
-                    <button class="btn btn-primary synth-btn" onclick="synthesize()">▶ 开始合成</button>
+                    <button class="btn btn-primary synth-btn" onclick="synthesize()"><span class="material-icons">play_arrow</span> 开始合成</button>
 
                     <div class="loading" id="loading">
                         <div class="spinner"></div>
@@ -75,7 +76,7 @@
 
                     <div class="result-section hidden" id="resultSection">
                         <div class="audio-player">
-                            <button class="play-btn" onclick="togglePlay()" id="playBtn">▶</button>
+                            <button class="play-btn" onclick="togglePlay()" id="playBtn"><span class="material-icons">play_arrow</span></button>
                             <div class="audio-progress">
                                 <div class="audio-progress-fill" id="progressFill"></div>
                             </div>
@@ -84,8 +85,8 @@
                         <div class="result-meta">
                             <span id="resultMeta">耗时: --  大小: --</span>
                             <div class="result-actions">
-                                <button class="btn btn-secondary" onclick="downloadAudio()">⬇ 下载</button>
-                                <button class="btn btn-secondary" onclick="synthesize()">🔄 重新合成</button>
+                                <button class="btn btn-secondary" onclick="downloadAudio()"><span class="material-icons">download</span> 下载</button>
+                                <button class="btn btn-secondary" onclick="synthesize()"><span class="material-icons">refresh</span> 重新合成</button>
                             </div>
                         </div>
                     </div>
@@ -94,15 +95,15 @@
                 <!-- 音色设计 Tab -->
                 <div class="tab-content" id="tab-design">
                     <div class="section">
-                        <div class="section-title">音色描述</div>
-                        <textarea id="designDescInput" class="style-input" placeholder="描述你想要的音色，例如：年轻女性，温柔治愈，语速稍慢，带着一丝慵懒&#10;&#10;💡 好的描述包含：性别年龄 + 音色质感 + 情绪语气 + 语速节奏" rows="4"></textarea>
+                        <div class="section-title">音色描述 <span class="section-hint">好的描述包含：性别年龄 + 音色质感 + 情绪语气 + 语速节奏</span></div>
+                        <textarea id="designDescInput" class="style-input" placeholder="描述你想要的音色，例如：年轻女性，温柔治愈，语速稍慢，带着一丝慵懒" rows="4"></textarea>
                     </div>
                     <div class="section">
                         <div class="section-title">合成文本</div>
                         <textarea id="designTextInput" placeholder="请输入要合成的文本..." rows="4"></textarea>
                         <div class="char-count"><span id="designCharCount">0</span>/5000</div>
                     </div>
-                    <button class="btn btn-primary synth-btn" onclick="synthesizeDesign()">▶ 开始合成</button>
+                    <button class="btn btn-primary synth-btn" onclick="synthesizeDesign()"><span class="material-icons">play_arrow</span> 开始合成</button>
 
                     <div class="loading" id="designLoading">
                         <div class="spinner"></div>
@@ -111,7 +112,7 @@
 
                     <div class="result-section hidden" id="designResultSection">
                         <div class="audio-player">
-                            <button class="play-btn" onclick="togglePlay()" id="designPlayBtn">▶</button>
+                            <button class="play-btn" onclick="togglePlay()" id="designPlayBtn"><span class="material-icons">play_arrow</span></button>
                             <div class="audio-progress">
                                 <div class="audio-progress-fill" id="designProgressFill"></div>
                             </div>
@@ -120,8 +121,8 @@
                         <div class="result-meta">
                             <span id="designResultMeta">耗时: --  大小: --</span>
                             <div class="result-actions">
-                                <button class="btn btn-secondary" onclick="downloadAudio()">⬇ 下载</button>
-                                <button class="btn btn-secondary" onclick="synthesizeDesign()">🔄 重新合成</button>
+                                <button class="btn btn-secondary" onclick="downloadAudio()"><span class="material-icons">download</span> 下载</button>
+                                <button class="btn btn-secondary" onclick="synthesizeDesign()"><span class="material-icons">refresh</span> 重新合成</button>
                             </div>
                         </div>
                     </div>
@@ -132,17 +133,17 @@
                     <div class="section">
                         <div class="section-title">上传音频样本</div>
                         <div class="upload-zone" id="cloneUploadZone">
-                            <p class="upload-icon">⬆</p>
+                            <p class="upload-icon"><span class="material-icons">file_upload</span></p>
                             <p class="upload-text">拖拽音频文件到这里，或点击选择</p>
                             <p class="upload-hint">支持 MP3、WAV (≤10MB)</p>
                             <button class="btn btn-secondary" onclick="document.getElementById('cloneFileInput').click()">选择文件</button>
                             <input type="file" id="cloneFileInput" accept="audio/mpeg,audio/wav,audio/mp3,.mp3,.wav" style="display:none">
                         </div>
                         <div class="file-info hidden" id="cloneFileInfo">
-                            <button class="play-btn-sm" id="clonePreviewBtn" onclick="toggleClonePreview()">▶</button>
+                            <button class="play-btn-sm" id="clonePreviewBtn" onclick="toggleClonePreview()"><span class="material-icons">play_arrow</span></button>
                             <span id="cloneFileName"></span>
                             <span id="cloneFileSize"></span>
-                            <button class="btn btn-secondary btn-sm" onclick="clearCloneFile()">✕ 移除</button>
+                            <button class="btn btn-secondary btn-sm" onclick="clearCloneFile()"><span class="material-icons">close</span> 移除</button>
                         </div>
                     </div>
                     <div class="section">
@@ -150,7 +151,7 @@
                         <textarea id="cloneTextInput" placeholder="请输入要合成的文本..." rows="4"></textarea>
                         <div class="char-count"><span id="cloneCharCount">0</span>/5000</div>
                     </div>
-                    <button class="btn btn-primary synth-btn" id="cloneSynthBtn" onclick="synthesizeClone()">▶ 开始合成</button>
+                    <button class="btn btn-primary synth-btn" id="cloneSynthBtn" onclick="synthesizeClone()"><span class="material-icons">play_arrow</span> 开始合成</button>
 
                     <div class="loading" id="cloneLoading">
                         <div class="spinner"></div>
@@ -159,7 +160,7 @@
 
                     <div class="result-section hidden" id="cloneResultSection">
                         <div class="audio-player">
-                            <button class="play-btn" onclick="togglePlay()" id="clonePlayBtn">▶</button>
+                            <button class="play-btn" onclick="togglePlay()" id="clonePlayBtn"><span class="material-icons">play_arrow</span></button>
                             <div class="audio-progress">
                                 <div class="audio-progress-fill" id="cloneProgressFill"></div>
                             </div>
@@ -168,8 +169,8 @@
                         <div class="result-meta">
                             <span id="cloneResultMeta">耗时: --  大小: --</span>
                             <div class="result-actions">
-                                <button class="btn btn-secondary" onclick="downloadAudio()">⬇ 下载</button>
-                                <button class="btn btn-secondary" onclick="synthesizeClone()">🔄 重新合成</button>
+                                <button class="btn btn-secondary" onclick="downloadAudio()"><span class="material-icons">download</span> 下载</button>
+                                <button class="btn btn-secondary" onclick="synthesizeClone()"><span class="material-icons">refresh</span> 重新合成</button>
                             </div>
                         </div>
                     </div>
@@ -188,7 +189,7 @@
                 <div class="preview-content">
                     <pre id="previewCode"></pre>
                 </div>
-                <button class="btn btn-secondary copy-btn" onclick="copyPreview()">📋 复制代码</button>
+                <button class="btn btn-secondary copy-btn" onclick="copyPreview()"><span class="material-icons">content_copy</span> 复制代码</button>
             </div>
         </div>
     </div>
@@ -197,8 +198,8 @@
     <div class="modal-overlay hidden" id="settingsModal">
         <div class="modal">
             <div class="modal-header">
-                <h2>⚙️ 设置</h2>
-                <button class="btn-icon" onclick="closeSettings()">✕</button>
+                <h2><span class="material-icons">settings</span> 设置</h2>
+                <button class="btn-icon" onclick="closeSettings()"><span class="material-icons">close</span></button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -209,7 +210,7 @@
                 <div class="form-group">
                     <label>API Key</label>
                     <input type="text" id="apiKeyInput" placeholder="请输入你的 API Key">
-                    <p class="hint">💡 存储在浏览器本地，不会上传到任何服务器</p>
+                    <p class="hint"><span class="material-icons hint-icon">lightbulb</span> 存储在浏览器本地，不会上传到任何服务器</p>
                 </div>
                 <p class="hint">获取方式：<a href="https://platform.xiaomimimo.com/#/console/api-keys" target="_blank">控制台 → API Keys</a></p>
             </div>

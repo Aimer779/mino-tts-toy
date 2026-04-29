@@ -171,7 +171,7 @@ function clearCloneFile() {
     document.getElementById('cloneFileInput').value = '';
     document.getElementById('cloneFileInfo').classList.add('hidden');
     document.getElementById('cloneUploadZone').classList.remove('hidden');
-    document.getElementById('clonePreviewBtn').textContent = '▶';
+    document.getElementById('clonePreviewBtn').innerHTML = '<span class="material-icons">play_arrow</span>';
     updatePreview();
 }
 
@@ -180,14 +180,14 @@ function toggleClonePreview() {
     const btn = document.getElementById('clonePreviewBtn');
     if (clonePreviewAudio && !clonePreviewAudio.paused) {
         clonePreviewAudio.pause();
-        btn.textContent = '▶';
+        btn.innerHTML = '<span class="material-icons">play_arrow</span>';
     } else {
         if (!clonePreviewAudio) {
             clonePreviewAudio = new Audio(cloneFileBase64);
-            clonePreviewAudio.addEventListener('ended', () => btn.textContent = '▶');
+            clonePreviewAudio.addEventListener('ended', () => btn.innerHTML = '<span class="material-icons">play_arrow</span>');
         }
         clonePreviewAudio.play();
-        btn.textContent = '⏸';
+        btn.innerHTML = '<span class="material-icons">pause</span>';
     }
 }
 
@@ -298,8 +298,8 @@ function copyPreview() {
     navigator.clipboard.writeText(code).then(() => {
         const btn = document.querySelector('.copy-btn');
         const original = btn.textContent;
-        btn.textContent = '✓ 已复制';
-        setTimeout(() => btn.textContent = original, 2000);
+        btn.innerHTML = '<span class="material-icons">check</span> 已复制';
+        setTimeout(() => btn.innerHTML = original, 2000);
     });
 }
 
@@ -370,14 +370,14 @@ async function synthesize() {
         currentAudio.addEventListener('timeupdate', updateProgress);
         currentAudio.addEventListener('ended', () => {
             isPlaying = false;
-            document.getElementById('playBtn').textContent = '▶';
+            document.getElementById('playBtn').innerHTML = '<span class="material-icons">play_arrow</span>';
         });
 
         // Show result
         document.getElementById('loading').classList.remove('show');
         document.getElementById('resultSection').classList.remove('hidden');
         document.getElementById('resultMeta').textContent = `耗时: ${elapsed}s  大小: ${size}KB`;
-        document.getElementById('playBtn').textContent = '▶';
+        document.getElementById('playBtn').innerHTML = '<span class="material-icons">play_arrow</span>';
         isPlaying = false;
 
     } catch (error) {
@@ -456,14 +456,14 @@ async function synthesizeDesign() {
         currentAudio.addEventListener('timeupdate', updateProgress);
         currentAudio.addEventListener('ended', () => {
             isPlaying = false;
-            document.getElementById('designPlayBtn').textContent = '▶';
+            document.getElementById('designPlayBtn').innerHTML = '<span class="material-icons">play_arrow</span>';
         });
 
         // Show result
         document.getElementById('designLoading').classList.remove('show');
         document.getElementById('designResultSection').classList.remove('hidden');
         document.getElementById('designResultMeta').textContent = `耗时: ${elapsed}s  大小: ${size}KB`;
-        document.getElementById('designPlayBtn').textContent = '▶';
+        document.getElementById('designPlayBtn').innerHTML = '<span class="material-icons">play_arrow</span>';
         isPlaying = false;
 
     } catch (error) {
@@ -542,14 +542,14 @@ async function synthesizeClone() {
         currentAudio.addEventListener('timeupdate', updateProgress);
         currentAudio.addEventListener('ended', () => {
             isPlaying = false;
-            document.getElementById('clonePlayBtn').textContent = '▶';
+            document.getElementById('clonePlayBtn').innerHTML = '<span class="material-icons">play_arrow</span>';
         });
 
         // Show result
         document.getElementById('cloneLoading').classList.remove('show');
         document.getElementById('cloneResultSection').classList.remove('hidden');
         document.getElementById('cloneResultMeta').textContent = `耗时: ${elapsed}s  大小: ${size}KB`;
-        document.getElementById('clonePlayBtn').textContent = '▶';
+        document.getElementById('clonePlayBtn').innerHTML = '<span class="material-icons">play_arrow</span>';
         isPlaying = false;
 
     } catch (error) {
@@ -586,10 +586,10 @@ function togglePlay() {
 
     if (isPlaying) {
         currentAudio.pause();
-        document.getElementById(ids.playBtn).textContent = '▶';
+        document.getElementById(ids.playBtn).innerHTML = '<span class="material-icons">play_arrow</span>';
     } else {
         currentAudio.play();
-        document.getElementById(ids.playBtn).textContent = '⏸';
+        document.getElementById(ids.playBtn).innerHTML = '<span class="material-icons">pause</span>';
     }
     isPlaying = !isPlaying;
 }
